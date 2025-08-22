@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Orders2.Shared.Interfaces;
 namespace Orders2.Shared.Entities;
 
-public class Category
+public class Category : IEntityWithName
 {
     public int Id { get; set; }
 
