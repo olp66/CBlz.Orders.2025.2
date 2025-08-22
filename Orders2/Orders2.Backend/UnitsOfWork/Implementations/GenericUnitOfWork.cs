@@ -1,9 +1,6 @@
 ﻿using Orders2.Backend.Repositories.Interfaces;
 using Orders2.Backend.UnitsOfWork.Interfaces;
 using Orders2.Shared.Responses;
-using Orders2.Backend.Repositories.Interfaces;
-using Orders2.Backend.UnitsOfWork.Interfaces;
-using Orders2.Shared.Responses;
 
 namespace Orders2.Backend.UnitsOfWork.Implementations;
 
