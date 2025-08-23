@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders2.Backend", "Orders2.Backend\Orders2.Backend.csproj", "{2A272418-D168-49A7-A1C1-D4228D370D48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3A3463F-AA12-4186-9BFE-2546CCD12382} = {D3A3463F-AA12-4186-9BFE-2546CCD12382}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders2.Shared", "Orders2.Shared\Orders2.Shared.csproj", "{6EA12B60-18F6-4BF9-9408-CDAE48AB7D18}"
 EndProject

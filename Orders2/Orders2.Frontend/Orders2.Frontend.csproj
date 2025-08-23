@@ -11,4 +11,14 @@
     <PackageReference Include="MudBlazor" Version="8.11.0" />
     <PackageReference Include="System.Net.Http" Version="4.1.0" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Orders2.Shared\Orders2.Shared.csproj" />
+  </ItemGroup>
 </Project>
