@@ -24,4 +24,7 @@ _countriesRepository.GetAsync();
 _countriesRepository.GetAsync(pagination);
 
     public override async Task<ActionResponse<Country>> GetAsync(int id) => await _countriesRepository.GetAsync(id);
+
+    public override async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await
+    _countriesRepository.GetTotalRecordsAsync(pagination);
 }
