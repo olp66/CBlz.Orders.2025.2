@@ -1,5 +1,6 @@
-﻿<MudDialog>
-    <DialogContent>
-        <CountryForm Country="country" OnValidSubmit="CreateAsync" ReturnAction="Return" />
-    </DialogContent>
+﻿@using Orders2.Frontend.Components.Pages.Shared
+<MudDialog> 
+    <DialogContent> 
+        <FormWithName Label="País:" Model="country" OnValidSubmit="CreateAsync" ReturnAction="Return" /> 
+    </DialogContent> 
 </MudDialog> 

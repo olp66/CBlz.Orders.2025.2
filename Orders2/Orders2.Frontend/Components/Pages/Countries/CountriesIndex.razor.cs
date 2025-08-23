@@ -100,7 +100,8 @@ public partial class CountriesIndex
             var parameters = new DialogParameters
             {
                 { "Id", id }
-            }; dialog = await DialogService.ShowAsync<CountryEdit>("Editar país", parameters, options);
+            }; 
+            dialog = await DialogService.ShowAsync<CountryEdit>("Editar país", parameters, options);
         }
         else
         {
