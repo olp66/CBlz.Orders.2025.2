@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Orders2.Backend.Data;
+using Orders2.Backend.Helpers;
 using Orders2.Backend.Repositories.Implementations;
 using Orders2.Backend.Repositories.Interfaces;
+using Orders2.Shared.DTOs;
 using Orders2.Shared.Entities;
 using Orders2.Shared.Responses;
  
@@ -19,12 +21,29 @@ public class CountriesRepository : GenericRepository<Country>, ICountriesReposit
     public override async Task<ActionResponse<IEnumerable<Country>>> GetAsync()
     {
         var countries = await _context.Countries
+            .OrderBy(x => x.Name)
             .Include(c => c.States)
             .ToListAsync();
         return new ActionResponse<IEnumerable<Country>>
         {
             WasSuccess = true,
             Result = countries
+        };
+    }
+
+    public override async Task<ActionResponse<IEnumerable<Country>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _context.Countries
+            .Include(c => c.States)
+            .AsQueryable();
+
+        return new ActionResponse<IEnumerable<Country>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .OrderBy(x => x.Name)
+                .Paginate(pagination)
+                .ToListAsync()
         };
     }
 

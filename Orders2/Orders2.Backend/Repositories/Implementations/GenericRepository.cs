@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Orders2.Backend.Data;
+using Orders2.Backend.Helpers;
 using Orders2.Backend.Repositories.Interfaces;
+using Orders2.Shared.DTOs;
 using Orders2.Shared.Responses;
 
 namespace Orders2.Backend.Repositories.Implementations;
@@ -93,6 +95,30 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         {
             WasSuccess = true,
             Result = await _entity.ToListAsync()
+        };
+    }
+
+    public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+
+        return new ActionResponse<IEnumerable<T>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .Paginate(pagination)
+                .ToListAsync()
+        };
+    }
+
+    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
         };
     }
 

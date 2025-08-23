@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Orders2.Backend.Data;
 using Orders2.Shared.Entities;
 
-namespace Orders.Backend.Data;
+namespace Orders2.Backend.Data;
 
 public class SeedDb
 {

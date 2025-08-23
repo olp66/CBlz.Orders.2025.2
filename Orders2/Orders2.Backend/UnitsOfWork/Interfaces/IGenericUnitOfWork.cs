@@ -1,4 +1,4 @@
-﻿using Orders2.Shared.Responses;
+﻿using Orders2.Shared.DTOs;
 using Orders2.Shared.Responses;
 
 namespace Orders2.Backend.UnitsOfWork.Interfaces;
@@ -6,6 +6,10 @@ namespace Orders2.Backend.UnitsOfWork.Interfaces;
 public interface IGenericUnitOfWork<T> where T : class
 {
     Task<ActionResponse<IEnumerable<T>>> GetAsync();
+
+    Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination);
+
+    Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
 
     Task<ActionResponse<T>> AddAsync(T model);
 

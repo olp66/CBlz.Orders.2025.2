@@ -1,6 +1,5 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
-using Orders.Backend.Data;
 using Orders2.Backend.Data;
 using Orders2.Backend.Repositories.Implementations;
 using Orders2.Backend.Repositories.Interfaces;
@@ -16,8 +15,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=DefaultConnection"));
+
+builder.Services.AddScoped<ICitiesRepository, CitiesRepository>();
 builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
 builder.Services.AddScoped<IStatesRepository, StatesRepository>();
+
+builder.Services.AddScoped<ICitiesUnitOfWork, CitiesUnitOfWork>();
 builder.Services.AddScoped<ICountriesUnitOfWork, CountriesUnitOfWork>();
 builder.Services.AddScoped<IStatesUnitOfWork, StatesUnitOfWork>();
 builder.Services.AddTransient<SeedDb>();
